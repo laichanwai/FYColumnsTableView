@@ -31,6 +31,7 @@
 		C691889A1F60E9A2005CA49F /* FYColumnsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FYColumnsTableView.h; sourceTree = "<group>"; };
 		C691889B1F60E9A2005CA49F /* FYColumnsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FYColumnsTableView.m; sourceTree = "<group>"; };
 		C691889D1F60E9F7005CA49F /* city.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
+		C6C58C461F61482F000CDD18 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +48,7 @@
 		C69188771F60E72B005CA49F = {
 			isa = PBXGroup;
 			children = (
+				C6C58C461F61482F000CDD18 /* README.md */,
 				C69188821F60E72B005CA49F /* FYColumnsTableView */,
 				C69188811F60E72B005CA49F /* Products */,
 			);
