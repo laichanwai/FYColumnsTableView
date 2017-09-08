@@ -15,6 +15,8 @@
 		C69188931F60E72B005CA49F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C69188921F60E72B005CA49F /* main.m */; };
 		C691889C1F60E9A2005CA49F /* FYColumnsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C691889B1F60E9A2005CA49F /* FYColumnsTableView.m */; };
 		C691889E1F610998005CA49F /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = C691889D1F60E9F7005CA49F /* city.plist */; };
+		C6C58C4F1F615BA9000CDD18 /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C58C4E1F615BA9000CDD18 /* ViewController2.m */; };
+		C6C58C521F615BD8000CDD18 /* ViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C58C511F615BD8000CDD18 /* ViewController1.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,10 @@
 		C691889B1F60E9A2005CA49F /* FYColumnsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FYColumnsTableView.m; sourceTree = "<group>"; };
 		C691889D1F60E9F7005CA49F /* city.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		C6C58C461F61482F000CDD18 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C6C58C4D1F615BA9000CDD18 /* ViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
+		C6C58C4E1F615BA9000CDD18 /* ViewController2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
+		C6C58C501F615BD8000CDD18 /* ViewController1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController1.h; sourceTree = "<group>"; };
+		C6C58C511F615BD8000CDD18 /* ViewController1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController1.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,10 @@
 				C691889D1F60E9F7005CA49F /* city.plist */,
 				C69188861F60E72B005CA49F /* ViewController.h */,
 				C69188871F60E72B005CA49F /* ViewController.m */,
+				C6C58C501F615BD8000CDD18 /* ViewController1.h */,
+				C6C58C511F615BD8000CDD18 /* ViewController1.m */,
+				C6C58C4D1F615BA9000CDD18 /* ViewController2.h */,
+				C6C58C4E1F615BA9000CDD18 /* ViewController2.m */,
 				C69188891F60E72B005CA49F /* Main.storyboard */,
 				C691888C1F60E72B005CA49F /* Assets.xcassets */,
 				C691888E1F60E72B005CA49F /* LaunchScreen.storyboard */,
@@ -162,9 +172,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C69188881F60E72B005CA49F /* ViewController.m in Sources */,
+				C6C58C521F615BD8000CDD18 /* ViewController1.m in Sources */,
 				C69188931F60E72B005CA49F /* main.m in Sources */,
 				C691889C1F60E9A2005CA49F /* FYColumnsTableView.m in Sources */,
 				C69188851F60E72B005CA49F /* AppDelegate.m in Sources */,
+				C6C58C4F1F615BA9000CDD18 /* ViewController2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

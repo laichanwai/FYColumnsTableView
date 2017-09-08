@@ -41,11 +41,15 @@
 - (UIView *)tableView:(FYColumnsTableView *)tableView viewForHeaderInSection:(NSInteger)section columns:(NSUInteger)columns;
 - (UIView *)tableView:(FYColumnsTableView *)tableView viewForFooterInSection:(NSInteger)section columns:(NSUInteger)columns;
 
+// 自定义 tableView (自动缓存)
+- (UITableView *)tableView:(FYColumnsTableView *)tableView customTableViewForColumns:(NSUInteger)columns;
+
 @end
 
-@interface FYColumnsTableView : UIView
+@interface FYColumnsTableView : UIView <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, assign) NSUInteger columns;   // 设置 列的个数
+@property (nonatomic, assign, getter=isRelactive) BOOL relactive;
 @property (nonatomic, weak) id<FYColumnsTableViewDelegate> delegate;
 
 // 选中记录，记录每级选中的 indexPath
