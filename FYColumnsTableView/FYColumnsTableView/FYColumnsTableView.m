@@ -39,6 +39,7 @@
     if (self.isRelactive) {
         UITableView *tableView = [self tableViewAtColumns:0];
         [tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+        [self tableView:tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     }
 }
 
@@ -87,17 +88,10 @@
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    while (self.records.count > tableView.tag) {
-        [self.records removeLastObject];
-    }
-    [self.records addObject:indexPath];
-    
-    if ([self.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:inColumns:)]) {
-        [self.delegate tableView:self didSelectRowAtIndexPath:indexPath inColumns:tableView.tag];
-    }
+    [self recordsSelected:tableView atIndexPath:indexPath];
     
     if (self.isRelactive) {
-        if (tableView.tag != self.columns - 1) {
+        if (tableView.tag != self.columns - 2) {
             UITableView *next = [self tableViewAtColumns:tableView.tag + 1];
             [next scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.row] atScrollPosition:UITableViewScrollPositionTop animated:YES];
         }
@@ -105,6 +99,11 @@
         // 展开下一级
         [self reloadTableViewAtColumns:tableView.tag + 1];
     }
+    
+    if ([self.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:inColumns:)]) {
+        [self.delegate tableView:self didSelectRowAtIndexPath:indexPath inColumns:tableView.tag];
+    }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -145,6 +144,7 @@
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (!self.isRelactive) return;
     if (scrollView.tag == 0) return;
     if (!scrollView.dragging) return;
     if ([scrollView isKindOfClass:[UITableView class]]) {
@@ -152,13 +152,31 @@
         UITableView *prevTable = [self tableViewAtColumns:tableView.tag - 1];
         
         NSIndexPath *cur = [tableView indexPathsForVisibleRows].firstObject;
-        NSIndexPath *prev = [prevTable indexPathsForVisibleRows].firstObject;
-        NSIndexPath *select = [NSIndexPath indexPathForRow:cur.section inSection:prev.section];
-        [prevTable selectRowAtIndexPath:select animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        if (cur.section != [self.records.firstObject row]) {
+            NSIndexPath *prev = [prevTable indexPathsForVisibleRows].firstObject;
+            NSIndexPath *select = [NSIndexPath indexPathForRow:cur.section inSection:prev.section];
+            [prevTable selectRowAtIndexPath:select animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+            [self tableView:prevTable didSelectRowAtIndexPath:select];
+        }
     }
 }
 
 #pragma mark - Private
+- (void)recordsSelected:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
+    if (self.isRelactive) {
+        if (self.records.count <= tableView.tag) {
+            [self.records addObject:indexPath];
+        } else {
+            [self.records replaceObjectAtIndex:tableView.tag withObject:indexPath];
+        }
+    } else {
+        while (self.records.count > tableView.tag) {
+            [self.records removeLastObject];
+        }
+        [self.records addObject:indexPath];
+    }
+}
+
 - (void)resetTableViews {
     if (self.columns > 0) {
         CGFloat width = self.frame.size.width / self.columns;

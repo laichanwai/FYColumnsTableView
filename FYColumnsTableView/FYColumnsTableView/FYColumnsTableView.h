@@ -49,7 +49,7 @@
 @interface FYColumnsTableView : UIView <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, assign) NSUInteger columns;   // 设置 列的个数
-@property (nonatomic, assign, getter=isRelactive) BOOL relactive;
+@property (nonatomic, assign, getter=isRelactive) BOOL relactive;   // 是否关联滚动
 @property (nonatomic, weak) id<FYColumnsTableViewDelegate> delegate;
 
 // 选中记录，记录每级选中的 indexPath

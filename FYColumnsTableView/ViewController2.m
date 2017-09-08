@@ -23,7 +23,8 @@
     
     [self loadData];
     
-    FYColumnsTableView *tableView = [[FYColumnsTableView alloc] initWithFrame:self.view.bounds];
+    CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64);
+    FYColumnsTableView *tableView = [[FYColumnsTableView alloc] initWithFrame:frame];
     tableView.columns = 2;
     tableView.delegate = self;
     tableView.relactive = YES;
